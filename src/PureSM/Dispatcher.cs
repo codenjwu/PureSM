@@ -15,19 +15,16 @@ namespace PureSM
         private readonly State _initialState;
         private readonly List<State> _lastStates = new List<State>();
         private readonly List<State> _states;
-        private readonly List<IVariable> _variables;
 
         /// <summary>
         /// Initializes a new instance of the Dispatcher class.
         /// </summary>
         /// <param name="initialState">The initial state to start execution from.</param>
         /// <param name="states">The list of all states in the state machine.</param>
-        /// <param name="variables">The list of variables used in the state machine.</param>
-        public Dispatcher(State initialState, List<State> states, List<IVariable> variables)
+        public Dispatcher(State initialState, List<State> states)
         {
             _initialState = initialState ?? throw new ArgumentNullException(nameof(initialState));
             _states = states ?? throw new ArgumentNullException(nameof(states));
-            _variables = variables ?? throw new ArgumentNullException(nameof(variables));
         }
 
         /// <summary>

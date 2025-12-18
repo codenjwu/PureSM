@@ -55,7 +55,7 @@ namespace PureSM.Tests
         {
             // Arrange
             var initialState = new TrackingState(_context, true);
-            var dispatcher = new Dispatcher(initialState, new List<State> { initialState }, new List<IVariable>());
+            var dispatcher = new Dispatcher(initialState, new List<State> { initialState });
             var stateMachine = new StateMachine(dispatcher, _context);
 
             // Act
@@ -70,7 +70,7 @@ namespace PureSM.Tests
         {
             // Arrange
             var initialState = new TrackingState(_context, true);
-            var dispatcher = new Dispatcher(initialState, new List<State> { initialState }, new List<IVariable>());
+            var dispatcher = new Dispatcher(initialState, new List<State> { initialState });
             var stateMachine = new StateMachine(dispatcher, _context);
 
             // Act
@@ -92,7 +92,7 @@ namespace PureSM.Tests
             var transition = new Transition(alwaysTrue, new List<State> { state2 }, null);
             state1.AddTransition(transition);
 
-            var dispatcher = new Dispatcher(state1, states, new List<IVariable>());
+            var dispatcher = new Dispatcher(state1, states);
             var stateMachine = new StateMachine(dispatcher, _context);
 
             // Act
@@ -129,7 +129,7 @@ namespace PureSM.Tests
             _context.SetItem(key, value);
 
             var initialState = new TrackingState(_context, true);
-            var dispatcher = new Dispatcher(initialState, new List<State> { initialState }, new List<IVariable>());
+            var dispatcher = new Dispatcher(initialState, new List<State> { initialState });
             var stateMachine = new StateMachine(dispatcher, _context);
 
             // Act
@@ -144,7 +144,7 @@ namespace PureSM.Tests
         {
             // Arrange
             var state = new TrackingState(_context, true);
-            var dispatcher = new Dispatcher(state, new List<State> { state }, new List<IVariable>());
+            var dispatcher = new Dispatcher(state, new List<State> { state });
             var stateMachine = new StateMachine(dispatcher, _context);
 
             // Act
@@ -158,7 +158,7 @@ namespace PureSM.Tests
         private Dispatcher CreateSimpleDispatcher()
         {
             var state = new SimpleState(_context, true);
-            return new Dispatcher(state, new List<State> { state }, new List<IVariable>());
+            return new Dispatcher(state, new List<State> { state });
         }
 
         private class SimpleState : State

@@ -23,10 +23,9 @@ namespace PureSM.Tests
             // Arrange
             var initialState = new SimpleTestState(_context, false);
             var states = new List<State> { initialState };
-            var variables = new List<IVariable>();
 
             // Act
-            var dispatcher = new Dispatcher(initialState, states, variables);
+            var dispatcher = new Dispatcher(initialState, states);
 
             // Assert
             Assert.IsNotNull(dispatcher);
@@ -37,11 +36,10 @@ namespace PureSM.Tests
         {
             // Arrange
             var states = new List<State>();
-            var variables = new List<IVariable>();
 
             // Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() =>
-                new Dispatcher(null, states, variables));
+                new Dispatcher(null, states));
         }
 
         [TestMethod]
@@ -49,24 +47,12 @@ namespace PureSM.Tests
         {
             // Arrange
             var initialState = new SimpleTestState(_context, false);
-            var variables = new List<IVariable>();
 
             // Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() =>
-                new Dispatcher(initialState, null, variables));
+                new Dispatcher(initialState, null));
         }
 
-        [TestMethod]
-        public void Constructor_WithNullVariables_ThrowsArgumentNullException()
-        {
-            // Arrange
-            var initialState = new SimpleTestState(_context, false);
-            var states = new List<State>();
-
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() =>
-                new Dispatcher(initialState, states, null));
-        }
 
         [TestMethod]
         public async Task DispatchAsync_WithNullContext_ThrowsArgumentNullException()
@@ -74,8 +60,7 @@ namespace PureSM.Tests
             // Arrange
             var initialState = new SimpleTestState(_context, false);
             var states = new List<State> { initialState };
-            var variables = new List<IVariable>();
-            var dispatcher = new Dispatcher(initialState, states, variables);
+            var dispatcher = new Dispatcher(initialState, states);
 
             // Act & Assert
             await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
@@ -88,8 +73,7 @@ namespace PureSM.Tests
             // Arrange
             var initialState = new TrackingTestState(_context, true);
             var states = new List<State> { initialState };
-            var variables = new List<IVariable>();
-            var dispatcher = new Dispatcher(initialState, states, variables);
+            var dispatcher = new Dispatcher(initialState, states);
 
             // Act
             await dispatcher.DispatchAsync(_context);
@@ -105,14 +89,13 @@ namespace PureSM.Tests
             var initialState = new TrackingTestState(_context, false);
             var endState = new TrackingTestState(_context, true);
             var states = new List<State> { initialState, endState };
-            var variables = new List<IVariable>();
 
             // Add transition from initial to end state
             Func<Context, State, Task<bool>> alwaysTrue = async (ctx, s) => await Task.FromResult(true);
             var transition = new Transition(alwaysTrue, new List<State> { endState }, null);
             initialState.AddTransition(transition);
 
-            var dispatcher = new Dispatcher(initialState, states, variables);
+            var dispatcher = new Dispatcher(initialState, states);
 
             // Act
             await dispatcher.DispatchAsync(_context);
@@ -128,9 +111,8 @@ namespace PureSM.Tests
             // Arrange
             var initialState = new TrackingTestState(_context, false);
             var states = new List<State> { initialState };
-            var variables = new List<IVariable>();
 
-            var dispatcher = new Dispatcher(initialState, states, variables);
+            var dispatcher = new Dispatcher(initialState, states);
 
             // Act
             await dispatcher.DispatchAsync(_context);
@@ -148,7 +130,6 @@ namespace PureSM.Tests
             var endState = new TrackingTestState(_context, true);
 
             var states = new List<State> { initialState, intermediateState, endState };
-            var variables = new List<IVariable>();
 
             // Create transitions
             Func<Context, State, Task<bool>> alwaysTrue = async (ctx, s) => await Task.FromResult(true);
@@ -158,7 +139,7 @@ namespace PureSM.Tests
             initialState.AddTransition(transition1);
             intermediateState.AddTransition(transition2);
 
-            var dispatcher = new Dispatcher(initialState, states, variables);
+            var dispatcher = new Dispatcher(initialState, states);
 
             // Act
             await dispatcher.DispatchAsync(_context);
@@ -180,7 +161,6 @@ namespace PureSM.Tests
             var initialState = new SimpleTestState(_context, false);
             var endState = new SimpleTestState(_context, true);
             var states = new List<State> { initialState, endState };
-            var variables = new List<IVariable>();
 
             Func<Context, State, Task<bool>> alwaysTrue = async (ctx, s) =>
             {
@@ -191,7 +171,7 @@ namespace PureSM.Tests
             var transition = new Transition(alwaysTrue, new List<State> { endState }, null);
             initialState.AddTransition(transition);
 
-            var dispatcher = new Dispatcher(initialState, states, variables);
+            var dispatcher = new Dispatcher(initialState, states);
 
             // Act
             await dispatcher.DispatchAsync(_context);

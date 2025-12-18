@@ -123,7 +123,7 @@ namespace PureSM
                 throw new InvalidOperationException("At least one state must be added before building.");
 
             var context = _context ?? new Context();
-            var dispatcher = new Dispatcher(_initialState, _states, new List<IVariable>());
+            var dispatcher = new Dispatcher(_initialState, _states);
 
             return new StateMachine(dispatcher, context);
         }
