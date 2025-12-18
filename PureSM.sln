@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PureSM", "src\PureSM\PureSM.csproj", "{45A8D4FC-8381-47D9-8ED3-937E9EF1B4A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1360AA54-2A90-4026-8DC1-D6F8CED6595E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PureSM.Tests", "tests\PureSM.Tests\PureSM.Tests.csproj", "{2E8B5F2A-4C7D-4B9E-8A1F-5D3C6B9E2F4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{05795F06-B37E-422D-8D75-9E41C851E7A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{07A9D6F8-C2E1-4D3B-9F5A-8E2C7D9B1F6A}"
+	ProjectSection(SolutionItems) = preProject
+		docs\api-reference.md = docs\api-reference.md
+		docs\examples.md = docs\examples.md
+		docs\faq.md = docs\faq.md
+		docs\getting-started.md = docs\getting-started.md
+		docs\usage.md = docs\usage.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45A8D4FC-8381-47D9-8ED3-937E9EF1B4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A8D4FC-8381-47D9-8ED3-937E9EF1B4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A8D4FC-8381-47D9-8ED3-937E9EF1B4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A8D4FC-8381-47D9-8ED3-937E9EF1B4A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E8B5F2A-4C7D-4B9E-8A1F-5D3C6B9E2F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E8B5F2A-4C7D-4B9E-8A1F-5D3C6B9E2F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E8B5F2A-4C7D-4B9E-8A1F-5D3C6B9E2F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E8B5F2A-4C7D-4B9E-8A1F-5D3C6B9E2F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E8B5F2A-4C7D-4B9E-8A1F-5D3C6B9E2F4A} = {1360AA54-2A90-4026-8DC1-D6F8CED6595E}
+		{07A9D6F8-C2E1-4D3B-9F5A-8E2C7D9B1F6A} = {05795F06-B37E-422D-8D75-9E41C851E7A5}
+	EndGlobalSection
+EndGlobal
