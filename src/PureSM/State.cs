@@ -58,19 +58,19 @@ namespace PureSM
         /// Performs the main action of this state. Called after Entry().
         /// </summary>
         /// <returns>A task representing the asynchronous operation.</returns>
-        public abstract Task<State> Action();
+        public abstract Task<State?> Action();
 
         /// <summary>
         /// Called when entering this state, before Action().
         /// </summary>
         /// <returns>A task representing the asynchronous operation.</returns>
-        public abstract Task<State> Entry();
+        public abstract Task<State?> Entry();
 
         /// <summary>
         /// Called when exiting this state, after Action().
         /// </summary>
         /// <returns>A task representing the asynchronous operation.</returns>
-        public abstract Task<State> Exit();
+        public abstract Task<State?> Exit();
 
         /// <summary>
         /// Handles the execution of this state by calling Entry, Action, and Exit in sequence.
