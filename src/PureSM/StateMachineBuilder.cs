@@ -127,5 +127,19 @@ namespace PureSM
 
             return new StateMachine(dispatcher, context);
         }
+
+        /// <summary>
+        /// Gets the initial state of the state machine being built.
+        /// </summary>
+        public State? InitialState => _initialState;
+
+        /// <summary>
+        /// Gets the current state being configured in the builder.
+        /// </summary>
+        /// <remarks>
+        /// This represents the state that transitions will be added to when calling AddTransition.
+        /// It is not the runtime current state of the state machine (which is managed by the Dispatcher).
+        /// </remarks>
+        public State? CurrentState => _currentState;
     }
 }
