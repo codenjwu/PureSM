@@ -12,6 +12,10 @@ namespace PureSM
     public abstract class State
     {
         /// <summary>
+        /// Gets the unique identifier associated with this instance.
+        /// </summary>
+        public string Identifier { get; init; } = string.Empty;
+        /// <summary>
         /// Gets or sets the variable associated with this state.
         /// </summary>
         public IVariable? Variable { get; private set; }
@@ -39,6 +43,21 @@ namespace PureSM
             Context = context ?? throw new ArgumentNullException(nameof(context));
             IsEndState = isEndState;
             if(transitions != null)
+                _transitions.AddRange(transitions);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the State class.
+        /// </summary>
+        /// <param name="context">The context passed through the state machine.</param>
+        /// <param name="isEndState">Indicates whether this is an end state.</param>
+        /// <param name="transitions">Optional initial transitions for this state.</param>
+        protected State(Context context, bool isEndState, string identifier, params Transition[] transitions)
+        {
+            Context = context ?? throw new ArgumentNullException(nameof(context));
+            IsEndState = isEndState;
+            Identifier = identifier;
+            if (transitions != null)
                 _transitions.AddRange(transitions);
         }
 

@@ -10,6 +10,11 @@ namespace PureSM
     /// </summary>
     public class StateMachine
     {
+        /// <summary>
+        /// Gets the unique identifier associated with this instance.
+        /// </summary>
+        public string Identifier { get; init; } = string.Empty;
+
         private readonly Dispatcher _dispatcher;
         private readonly Context _context;
 
@@ -22,6 +27,17 @@ namespace PureSM
         {
             _dispatcher = dispatcher ?? throw new ArgumentNullException(nameof(dispatcher));
             _context = context ?? throw new ArgumentNullException(nameof(context));
+        }
+        /// <summary>
+        /// Initializes a new instance of the StateMachine class.
+        /// </summary>
+        /// <param name="dispatcher">The dispatcher that manages state transitions.</param>
+        /// <param name="context">The context to pass to the state machine.</param>
+        public StateMachine(Dispatcher dispatcher, Context context, string dentifier)
+        {
+            _dispatcher = dispatcher ?? throw new ArgumentNullException(nameof(dispatcher));
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            Identifier = dentifier;
         }
 
         /// <summary>
