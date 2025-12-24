@@ -14,7 +14,15 @@ namespace PureSM
         private State? _currentState;
         private readonly List<State> _states = new();
         private Context? _context;
+        private string? _stateMachineName;
+        public StateMachineBuilder()
+        {
 
+        }
+        public StateMachineBuilder(string stateMachineName)
+        {
+            _stateMachineName = stateMachineName;
+        }
         /// <summary>
         /// Sets the initial state for the state machine.
         /// </summary>
@@ -125,7 +133,9 @@ namespace PureSM
             var context = _context ?? new Context();
             var dispatcher = new Dispatcher(_initialState, _states);
 
-            return new StateMachine(dispatcher, context);
+            return string.IsNullOrEmpty(_stateMachineName) 
+                ? new StateMachine(dispatcher, context) 
+                : new StateMachine(dispatcher, context, _stateMachineName);
         }
 
         /// <summary>
