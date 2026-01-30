@@ -9,4 +9,31 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- Package Information -->
+    <PackageId>PureSM</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>codenjwu</Authors>
+    <Company>codenjwu</Company>
+    <Product>PureSM</Product>
+    <Description>A lightweight, dependency-free C# library for building explicit state machines with a fluent builder API. Features async-friendly state lifecycle hooks, conditional transitions, context-passing, and terminal states support.</Description>
+    <PackageTags>state-machine;fsm;statemachine;async;workflow;fluent-api;dotnet</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/codenjwu/PureSM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/codenjwu/PureSM</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>Initial release of PureSM with support for .NET 5.0-9.0</PackageReleaseNotes>
+    
+    <!-- Build Configuration -->
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
 </Project>
